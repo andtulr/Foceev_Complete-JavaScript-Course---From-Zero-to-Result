@@ -201,5 +201,26 @@ ask("Вы согласны", showOk, showCancel)
 ask("Вы согласны",function() {alert("Спасибо за согласие")}, function() {alert("Вы отменили выполнение")})
 ------- funE
 ----- 8. Как работают стрелочные функции -------
+Это упрощенная запись fExpr.
 
+
+_____ function Expression _________                  _________ Arrow function expressions __________
+let funcExpression = function(arg1, arg2){           let funcArrow = (arg1, arg2) =>{
+  return someExpression                                 return someExpression
+}                                                    }  
+
+function ask(question, yes, no) {
+  if (confirm(question)){
+    yes()
+  }else no()
+}
+
+ask("Вы согласны",() => alert("Спасибо за согласие"), () => alert("Вы отменили выполнение"))
+
+
+let sum = (a, b) => a * b
+console.log(sum(5, 8))
 */
+
+
+
