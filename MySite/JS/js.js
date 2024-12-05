@@ -136,10 +136,15 @@ alert( message );
 */
  
 
+
+
 /* ___________3. Углубление в основы Java Script. Функции и Объекты____________
+
 
 ----------- 1. Используйте Use Strict ---------------
  "use snrict"
+
+
  ------------ 2. Введение в функции -------------------
 Функции - позволяют записать код который мы можем бистро переиспользовать.
 alert() - это встроенная в JS функция
@@ -155,7 +160,9 @@ function calc(a, b, c) {
     return a + b - c
 }
 const result = calc(10, 4, 15)
-console.log(result) 
+console.log(result)
+
+
 ------------- 3. Function Expression и Function Declaration -----------
 f Expression  - присваевание результата f. сразу переменной  - let sum = function(a, b) {
                 сверху соэдай, после используй                  return a + b;
@@ -163,7 +170,10 @@ f Expression  - присваевание результата f. сразу пе
 f Declaration - создай и используй в любом месте             - function sum(a, b) {
                                                                 return a + b;
                                                                }
+
+
 -------------- 4. Области видимости в JS ------------- 
+
 
 -------------- 6. Значения по умолчанию для параметров функций -------------
 function myFunction(параметр = "String", параметр = 7 + 2, итд){
@@ -178,6 +188,7 @@ function mFn(a = "Ваше число ", b = 7 + 2) {
 }
 mFn() //Ваше число 9
 mFn("Номер Вашего билета ") //Номер Вашего билета 9 
+
 
 --------- 7. Что такое callBack функции ----------
 Callback-функция — это функция обратного вызова.Нужна для передачи исполняемого кода в качестве аргумента другому коду, который вызывает её по завершении какого-либо действия.
@@ -200,6 +211,8 @@ ask("Вы согласны", showOk, showCancel)
 -------
 ask("Вы согласны",function() {alert("Спасибо за согласие")}, function() {alert("Вы отменили выполнение")})
 ------- funE
+
+
 ----- 8. Как работают стрелочные функции -------
 Это упрощенная запись fExpr.
 
@@ -220,7 +233,104 @@ ask("Вы согласны",() => alert("Спасибо за согласие"),
 
 let sum = (a, b) => a * b
 console.log(sum(5, 8))
+
+
+---------------- 10. Что такое объекты ---------
+
+ Объект - это набор свойств
+                           ключ:значени
+              ключ-строка : значение-любым, даже функцией или объектом
+Доступ к свойствам можно получить через символ точка "." -------- "НАЗВАНИЕ ОБЪЕКТА.СВОЙСТВА"
+________ПР.user.name //Имя
+Присваевание нового значения ключу ----- ИМЯ.КЛЮЧ = "новое значение"
+                                         CONSOLE.LOG(ИМЯ.КЛЮЧ)  //вывод "новое значение"
+Добавление нового свойства(ключа) к объекту --------ИМЯ.НОВЫЙ КЛЮЧ = "новое значение"
+Удаление свойства(ключа) - оператор delete ---------DELETE ИМЯ.КЛЮЧ
+____ взаместо точки "." - [] квадратные скобки - ПР. ИМЯ.КЛЮЧ = значение
+                                                     ИМЯ["КЛЮЧ"] = значение
+[] квадратные скобки - возмохно использовать выражения                                                     
+
+const user = {
+  name: "Andrei",
+  age: 53
+}
+console.log(user)
+console.log(user.age)
+
+user.name = "Irina"
+user.age = 52
+console.log(user.name, user.age)
+
+user.sex = "female"
+console.log(user.name, user.age, user.sex)
+
+delete user.sex
+console.log(user)
+
+user["sex"] = "female"
+console.log(user)
+
+delete user["sex"]
+console.log(user)
+
+// const propertyName = "newProperty"
+// user.propertyName = "propertyValue"
+// console.log(user)
+
+// const propertyName = "newProperty"
+// user[propertyName] = "propertyValue"
+// console.log(user)
+
+const propertyName = "newProperty"
+user[propertyName + " 2"] = "propertyValue"
+console.log(user) 
+
+'use strict'
+
+const user = {
+  name: "Andrei",
+  age: 53
+}
+
+const answer = prompt("Напишите слово name или age") - вызываем prompt - просит вписать name или age - передает переменной
+alert(user[answer])                                  - вызываем alert - вызывает модальное окно -обращаемся к объекту user и с помощью квадратных скобок ставим переменную [answer] (в этой переменной хранится объект) 
+
+----------------------- 11. Вложенные свойства объектов ----------------------------
+
+'use strict'
+const user = {
+  name: "Andrey",
+  age: 53,
+  placeOfBirth: {
+    country:"Russia",
+    city: "Novgorod"
+  }
+}
+console.log(user)
+user.placeOfBirth.country = "USA"       - замена значений
+user.placeOfBirth["dateOfBirth"] = 1971 - добавление новый ключ: значение
+delete user["placeOfBirth"].city        - удаление по ключу
+console.log(user)
+---------------------------- 12. Сокращенная запись свойств --------------
+
+const firstName = "John"
+const lastName = "Travolta"
+
+const user = {
+  firstName: firstName,
+  lastName: lastName,
+  country: "USA"
+}
+
+console.log(user) //{ firstName: 'John', lastName: 'Travolta', country: 'USA' }
 */
 
+const firstName = "John"
+const lastName = "Travolta"
 
-
+const user = {
+  firstName,
+  lastName,
+  country: "USA"
+}
+console.log(user) //{ firstName: 'John', lastName: 'Travolta', country: 'USA' }
