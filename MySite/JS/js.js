@@ -295,6 +295,7 @@ const user = {
 const answer = prompt("Напишите слово name или age") - вызываем prompt - просит вписать name или age - передает переменной
 alert(user[answer])                                  - вызываем alert - вызывает модальное окно -обращаемся к объекту user и с помощью квадратных скобок ставим переменную [answer] (в этой переменной хранится объект) 
 
+
 ----------------------- 11. Вложенные свойства объектов ----------------------------
 
 'use strict'
@@ -311,6 +312,8 @@ user.placeOfBirth.country = "USA"       - замена значений
 user.placeOfBirth["dateOfBirth"] = 1971 - добавление новый ключ: значение
 delete user["placeOfBirth"].city        - удаление по ключу
 console.log(user)
+
+
 ---------------------------- 12. Сокращенная запись свойств --------------
 
 const firstName = "John"
@@ -323,7 +326,6 @@ const user = {
 }
 
 console.log(user) //{ firstName: 'John', lastName: 'Travolta', country: 'USA' }
-*/
 
 const firstName = "John"
 const lastName = "Travolta"
@@ -334,3 +336,61 @@ const user = {
   country: "USA"
 }
 console.log(user) //{ firstName: 'John', lastName: 'Travolta', country: 'USA' }
+
+
+---------------------------- 13. Создание функций в объектах и немного про this --------------
+методы объектов - метод THIS 
+
+____ Function expression ______
+"user strict"
+
+const firstName = "John"
+const lastName = "Travolta"
+
+const user = {
+  firstName,
+  lastName,
+  birthYear: 1992,
+  //calcAge: function() {
+    return 2025 - user.birthYear
+  }
+  calcAge() {
+    return 2025 - user.birthYear
+  }  
+}
+// console.log(user) //{ firstName: 'John', lastName: 'Travolta', birthYear: 1992 }
+console.log(user.calcAge())  // 33
+
+____ Function Declaration ______
+
+"user strict"
+
+const firstName = "John"
+const lastName = "Travolta"
+
+function calcAge() {
+  return 2025 - user.birthYear 
+}
+const user = {
+  firstName,
+  lastName,
+  birthYear: 1992,
+  //calcAge: calcAge
+  calcAge,
+}
+console.log(user.calcAge()) //33
+
+чтобы функция работала при изменение имени объекта подстовляем THIS-вместо имени
+const user = {                     ------------    const userFirst = {
+calcAge: function() {              --------------  calcAge: function() { 
+    return 2025 - user.birthYear   --------------       return 2025 - this.birthYear
+  }                                --------------  }
+this - это динамический параметр 
+
+
+------------------ 14. ПРАКТИКА-04. Создайте калькулятор BMI с помощью объектов ---------------------
+
+*/
+
+
+
