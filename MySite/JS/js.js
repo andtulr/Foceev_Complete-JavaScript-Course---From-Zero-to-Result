@@ -390,7 +390,255 @@ this - это динамический параметр
 
 ------------------ 14. ПРАКТИКА-04. Создайте калькулятор BMI с помощью объектов ---------------------
 
+------------------ 15. Введение в массивы -----------------------------------------------------------
+
+Это упорядоченная коллекция данных.
+В массивах мы не даем название свойств - формируются по порядку цифрами с 0 и записывается в [].
+Ссылочный тип - ARRAY массив.
+
+
+'use strict'
+const userObject = {
+  firstName: "Andrei",
+  age:53,
+}
+console.log(userObject) //{ firstName: 'Andrei', age: 53 }
+
+const userArr = ["Andrei", 53,]
+console.log(userArr) // [ 'Andrei', 53 ]
+console.log(userArr[1]) // 53 ____ доступ к элементу в массиве - через порядковый номер
+userArr[3] = "Tulashkin" // доб. элеменов - по номеру
+console.log(userArr) // [ 'Andrei', 53, <1 empty item>, 'Tulashkin' ]
+
+// доступ к последниму элМас (3)-Tulashkin или методМас.- .at
+console.log(userArr[userArr.length - 1])
+console.log(userArr.at(-1)) //Tulashkin
+
+
+------------------ 16. Методы массивов -----------------------------------------------------------
+
+--------------4 метода добавления и удаления
+Добавление элемента в конец массива .PUSH
+_____const userArr = ["Andrei", 53,]
+_____userArr.push("male")
+_____console.log(userArr) //[ 'Andrei', 53, 'male' ]
+_____console.log(userArr.push("male")) //4
+_____console.log(userArr) //[ 'Andrei', 53, 'male', 'male' ]
+
+Добавление элемента в начало массива .UNSHIFT
+_____const userArr = ["Andrei", 53,]
+_____userArr.push("male")
+_____userArr.unshift(10)
+_____console.log(userArr) //[ 10, 'Andrei', 53, 'male' ]
+
+Удаление последнего элемента массива .POP
+_____const userArr = ["Andrei", 53,]
+_____userArr.push("male")
+_____userArr.unshift(10) //[ 10, 'Andrei', 53, 'male' ]
+_____userArr.pop() 
+_____console.log(userArr) //[ 10, 'Andrei', 53 ]
+_____console.log(userArr.pop()) //53
+_____console.log(userArr) //[ 10, 'Andrei' ]
+
+Удаление первого элемента массива .SHIFT
+_____const userArr = ["Andrei", 53,]
+_____userArr.push("male")
+_____userArr.unshift(10) //[ 10, 'Andrei', 53, 'male' ]
+_____userArr.pop() 
+_____console.log(userArr) //[ 10, 'Andrei', 53 ]
+_____userArr.shift()
+_____console.log(userArr) //[ 'Andrei', 53 ]
+
+const userArr = ["Andrei", 53, "male", "Tver"]
+console.log(userArr) //[ 'Andrei', 53, 'male', 'Tver' ]
+delete userArr[1]
+console.log(userArr) //[ 'Andrei', <1 empty item>, 'male', 'Tver' ]
+
+-------------- Метод точечного добавления и удаления
+Метод splice - 
+               удалить элемент
+const userArr = ["Andrei", 53, "male", "Tver"]
+console.log(userArr) //[ 'Andrei', 53, 'male', 'Tver' ]
+userArr.splice(1, 1)
+console.log(userArr) //[ 'Andrei', 'male', 'Tver' ]
+
+               добавить элементы в конкретное место массива без удаления
+const userArr = ["Andrei", 53, "male", "Tver"]
+console.log(userArr) //[ 'Andrei', 53, 'male', 'Tver' ]
+userArr.splice(1, 2, "femali", "Tulashkin")
+console.log(userArr)  //[ 'Andrei', 'femali', 'Tulashkin', 'Tver' ]
+
+               возвращает массив удаленных элементов
+const userArr = ["Andrei", 53, "male", "Tver"]
+console.log(userArr) //[ 'Andrei', 53, 'male', 'Tver' ]
+const dataFromUserArr = userArr.splice(1, 2)
+console.log(userArr) //[ 'Andrei', 'Tver' ]
+console.log(dataFromUserArr) //[ 53, 'male' ]
+
+
+-------------- Методы работы с данными массива
+Метод arr.includes() - конкретный элемент в массиве (возвращает булевое значение true_____false) 
+const userArr = ["Andrei", 53, "male", "Tver"]
+console.log(userArr) //[ 'Andrei', 53, 'male', 'Tver' ]
+console.log(userArr.includes("male")) //true
+console.log(userArr.includes(30)) //false           
+               
+Метод arr.indexOf()  - индекс определенного элемента в массиве ( значение в массиве есть - возвращает число индекса
+                                                                 значения нет            - возвращает  -1          )
+const userArr = ["Andrei", 53, "male", "Tver"]
+console.log(userArr) //[ 'Andrei', 53, 'male', 'Tver' ]
+console.log(userArr.indexOf("male")) //2
+console.log(userArr.indexOf(50)) //-1
+
+
+------------------ 17. Введение в цикл for -----------------------------------------------------------
+___________Циклы нужны, когда необходимо повторить какое либо действие много раз, если условие верно
+FOR (ПЕРЕМЕННАЯ начало цикла;УСЛОВИЕ ЦИКЛА проверка условия;ШАГ ЦИКЛА который будет выполняться после каждой итерации)
+for (let i = 1; i <= 10; i++) {
+  console.log("Это сообщение появилось в консоле 10 раз") // 10 раз появилось 
+}
+for (let i = 1; i <= 10; i++) {
+  console.log(`Это сообщение появилось в консоле ${i} раз`) // Это сообщение появилось в консоле 1 раз - в консоле 10 раз
+}
+
+
+'use strict'
+
+for (let i = 1; i <= 10; i++) {
+  if (i <= 4 && i > 1) {
+    console.log(`Это сообщение появилось в консоле ${i} раза`)
+  } else console.log(`Это сообщение появилось в консоле ${i} раз`)
+}
+'use strict'
+
+const arr = [
+  "Andrei",
+  "Tulashkin",
+  2055 - 1971,
+  "Tver",
+  true,
+  ["Алла", "Peter", "Ivan"]
+]
+console.log(arr) /*[
+  'Andrei',
+  'Tulashkin',
+  84,
+  'Tver',
+  true,
+  [ 'Алла', 'Peter', 'Ivan' ]
+]
+for (let i = 0; i < 6; i++) {  // for (let = 0; i < arr.length; i++) - не зависимо от длины массива
+  console.log(arr[i])/* Andrei
+                        Tulashkin
+                        84
+                        Tver
+                        true
+                        [ 'Алла', 'Peter', 'Ivan' ] 
+}
+const arr2 = [] //
+for (let i = 0; i < arr.length; i++) {
+  console.log(typeof arr[i]) /*string
+                               string
+                               number
+                               string
+                               boolean
+                               object 
+  arr2.push(typeof arr[i])                             
+}
+console.log(arr2) // [ 'string', 'string', 'number', 'string', 'boolean', 'object' ] 
+
+------------------ 18. Break & Continue в циклах For -----------------------------------------------------------
+
+continue - Используется при проверке условия внутри цикла. Если условие true переходит к следующей итерации, пропуская инструкции текущей итерации.
+'use strict'
+
+const arr = [
+  "Andrei",
+  "Tulashkin",
+  2055 - 1971,
+  "Tver",
+  true,
+  ["Алла", "Peter", "Ivan"]
+]
+
+for (let i = 0; i < arr.length; i++) {
+  if(typeof arr[i] !== "string") continue
+  console.log(arr[i]) /*Andrei
+                        Tulashkin
+                        Tver 
+
+}
+
+break    - Используется при проверке условия внутри цикла. Если условие true полностью прерывает цикл и выходит из него.
+
+'use strict'
+
+const arr = [
+  "Andrei",
+  "Tulashkin",
+  2055 - 1971,
+  "Tver",
+  true,
+  ["Алла", "Peter", "Ivan"]
+]
+
+for (let i = 0; i < arr.length; i++) {
+  if(typeof arr[i] === "number") break
+  console.log(arr[i]) /*Andrei
+                        Tulashkin
+
+}
+
+------------------ 19. Цикл While Do While -----------------------------------------------------------
+
+цикл WHILE - Берет внешнюю переменную и проверяет ее на правдивость по условию в скобках.
+Если true выполняет код в фигурных скобках
+let i = 1
+while(i <= 10) {
+  console.log(`Строка выводится в консоль ${i} раз`) // Это сообщение появилось в консоле 1 раз - в консоле 10 раз
+  i++
+}
+цикла do WHILE - Выполни действия в фигурных скобках хотя бы раз, даже, если условие ложно.
+let i = 100
+do {
+    console.log(`Строка выводится в консоль ${i} раз`) //Строка выводится в консоль 100 раз
+    i++
+} while(i <= 10)
+
+Цикл While может добиться того же результата, что и цикл for.
+_______________Что использовать?
+Если в коде не определено количество итераций и оно, например, генерируется, автоматически, 
+то используем while, если определено, то for.
+Если в цикле нужно использовать прерывание, break или continue, то используем for.
+WHILE(УСЛОВИЕ ЦИКЛА)
 */
+'use strict'
+let someNumder = Math.floor(Math.random() * 10);
+console.log(someNumder); //9.66841755039379 - 9
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
