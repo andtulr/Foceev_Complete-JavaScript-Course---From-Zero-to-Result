@@ -611,10 +611,91 @@ _______________Что использовать?
 то используем while, если определено, то for.
 Если в цикле нужно использовать прерывание, break или continue, то используем for.
 WHILE(УСЛОВИЕ ЦИКЛА)
-*/
+
 'use strict'
 let someNumder = Math.floor(Math.random() * 10);
 console.log(someNumder); //9.66841755039379 - 9
+
+------------------ 20. Копирование объектов. Мутация Объектов -----------------------------------------------------------
+
+____________________В JS есть 2 типа данных
+Примитивные типы данных - Число (Number)  Строка (String)  Логическое (Boolean)  Undefined  Null  Symbol  BigInt
+Ссылочные типы данныхj  - Объекты  Массивы (Объекты)
+----- Копирование примитивов
+Примитивные типы данных копируются по значению - 
+let a = 10
+let b = a
+//console.log(a)  10
+// console.log(b) 10
+b = "Привет Андрей"
+console.log(a) //10
+console.log(b) //Привет Андрей
+
+----- Копирование ссылочных типов
+Ссылочные типы данных копируются по ссылке
+const obj = {
+  name: "Andrei",
+  age: 53,
+}
+console.log(obj) //{ name: 'Andrei', age: 53 }
+const obj2 = obj
+obj.age= "Я думаю ..."
+console.log(obj) //{ name: 'Andrei', age: 'Я думаю ...' }
+console.log(obj2) //{ name: 'Andrei', age: 'Я думаю ...' }
+
+ ---- Создание независимщй копии объекта ----- Методы :
+Первый — это метод Object.assign() - 
+const obj = {
+  name: "Andrei",
+  age: 53,
+}
+console.log(obj) //{ name: 'Andrei', age: 53 }
+const obj2 = Object.assign({}, obj)
+console.log(obj2) //{ name: 'Andrei', age: 53 }
+obj.age = "Я думаю ..."
+console.log(obj) //{ name: 'Andrei', age: 'Я думаю ...' }
+console.log(obj2) //{ name: 'Andrei', age: 53 }
+Если у объекта есть вложенные объекты, то ссылки на них сохраняются!
+----------
+Второй вариант - Оператор разделения объекта на свойства {... имя}
+const obj = {
+  name: "Andrei",
+  age: 53,
+}
+const obj2 = {...obj}
+console.log(obj) //{ name: 'Andrei', age: 53 }
+console.log(obj2) //{ name: 'Andrei', age: 53 }
+obj.age = "Я думаю ..."
+console.log(obj) //{ name: 'Andrei', age: 'Я думаю ...' }
+console.log(obj2) //{ name: 'Andrei', age: 53 }
+Если у объекта есть вложенные объекты, то ссылки на них сохраняются!
+-----------
+Вложенные объекты не копируются независимо
+  Через Object.assign
+  Через оператор ...
+Копирование вложенных объектов независимо
+  Необходимо конвертировать объект JS в объект формата JSON и после конвертировать обратно в объект формата JS
+const obj = {
+  name: "Andrei",
+  age: 53,
+  someObj:{
+    city: "Tver"
+  }
+}
+console.log(obj) //{ name: 'Andrei', age: 53, someObj: { city: 'Tver' } }
+const obj2 = JSON.parse(JSON.stringify(obj))
+obj.someObj.city = "Moskow"
+console.log(obj) //{ name: 'Andrei', age: 53, someObj: { city: 'Moskow' } }
+console.log(obj2) //{ name: 'Andrei', age: 53, someObj: { city: 'Tver' } }
+
+
+------------------ 21. ПРАКТИКА-5-Создайте последовательность Фибоначи ---------------
+
+*/
+
+
+
+
 
 
 
