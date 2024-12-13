@@ -20,8 +20,42 @@ let navItems = document.querySelectorAll("li");
 console.log(navItems);
 console.log(navItems[1]);
 console.log(navItems.length);
-*/
+
 let elem = document.querySelector("h1");
 console.log(elem.innerHTML);
 elem.innerHTML = "Hello Irina" // Hello Andrei - Hello Irina
+
+'use strict'
+
+let h1He = document.querySelector("h1");
+let h2He = document.createElement("h2");
+
+h2He.innerHTML = "Доброе утро";
+h1He.before(h2He);
+console.log(h2He);
+
+*/
+'use strict'
+
+let h1He = document.querySelector("h1");
+h1He.insertAdjacentHTML("beforeend", "<p>Some text</p>");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
